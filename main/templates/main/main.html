@@ -14,18 +14,18 @@
 	<div class="navbar">
 		<nav>
 			<ul>
-				<li><a href = "/v2/{{project.id}}">User page</a></li>
-				<li><a href="/view">Main page</a></li>
+				<li><a href = "{% url 'create' %}">Create page</a></li>
+				<li><a href="/main">Main page</a></li>
 			</ul>
 		</nav>
 	</div>
 	{% block content %}
 		<h1>Projects: </h1>
-
+	<table>
 		{% for project in projects %}
-	<h3><a href="{% url 'v2' project.id %}">{{project.Title}}</a></h3>
+	<tr><h3><a href="{% url 'project' project.id %}">{{project.Title}}</a></h3></tr>
 		{% endfor %}
 	{% endblock %}
-
+	</table>
 </body>
 </html>
