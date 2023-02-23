@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 from .models import Project
 from .forms import ProjectForm
@@ -20,7 +20,9 @@ def create(response):
     form = ProjectForm()
 
     if response.method == 'POST':
-        print("Data from form: ", response.POST["Title"])
-
+        form = ProjectForm(response.POST)
+        if (form.is_valid):
+           form.save()
+        return redirect("main")
     context = {"form": form}
     return render(response, 'main/create.html', context)
