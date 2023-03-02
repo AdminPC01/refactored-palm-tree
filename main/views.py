@@ -14,7 +14,7 @@ def project(response,pk):
     reviews = project.review_set.all()
     context = {"project": project, "reviews": reviews}
     print("Project: ", project)
-    return render(response, 'main/single-project.html', context)
+    return render(response, "main/single-project.html", context)
 
 def create(response):
     form = ProjectForm()
@@ -25,4 +25,31 @@ def create(response):
            form.save()
         return redirect("main")
     context = {"form": form}
-    return render(response, 'main/create.html', context)
+    return render(response, "main/create.html", context)
+
+# def update(response):
+#     form = ProjectForm()
+#
+#     if response.method == "POST":
+#         form = ProjectForm(response.POST["Title"])
+#         for
+#
+
+def update_project(response,pk):
+    project = Project.objects.get(id=pk)
+    form = ProjectForm(instance=project)
+
+    if response.method == "POST":
+        form = ProjectForm(response.POST,instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect("main")
+    context = {"form":form}
+    return render(response, "main/create.html",context)
+
+def delete(response,pk):
+    project = Project.objects.get(id=pk)
+    if response.method == 'POST':
+        project.delete()
+        return redirect("main")
+    return render(response,"main/delete.html",{"project":project})

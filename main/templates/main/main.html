@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Home</title>
 
-	<style>
-	div.navbar nav ul li a{
-		text-decoration:none;
-		color: black;
-	}
-	</style>
+    <link href='{% static "styles/main.css" %}' rel="stylesheet" type="text/css"  />
 </head>
 <body>
-	<div class="navbar">
-		<nav>
-			<ul>
-				<li><a href = "{% url 'create' %}">Create page</a></li>
-				<li><a href="/main">Main page</a></li>
-			</ul>
-		</nav>
-	</div>
-	{% block content %}
-		<h1>Projects: </h1>
-	<table>
-		{% for project in projects %}
-	<tr><h3><a href="{% url 'project' project.id %}">{{project.Title}}</a></h3></tr>
-		{% endfor %}
-	{% endblock %}
-	</table>
+ <div class = "sidenav">
+     <h1> Projects </h1>
+     <img style = "width: 200px;" src='{% static "images/projects.jpg" %}'>
+     <ul>
+        <li><a href = "/main">Projects</a></li>
+        <li><a href = "{% url 'create' %}">Create</a></li>
+     </ul>
+    </div>
+
+ {% block content %}
+   {% for project in projects %}
+  <table>
+      <th><p><a href = "{% url 'project' project.id %}">{{project.Title}}</a></p></th>
+      <th><p><a href = "{% url 'update_project' project.id %}">Edite</a></p></th>
+      <th><p><a href = "{% url 'delete' project.id %}">Delete</a></p></th>
+  </table>
+   {% endfor%}
+ {% endblock %}
 </body>
 </html>

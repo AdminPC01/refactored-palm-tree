@@ -7,7 +7,7 @@ from django.db import models
 class Project(models.Model):
     # owner
     Title = models.CharField(max_length=100)
-    # featured_image
+    featured_image = models.ImageField(null=True,blank=True)
     description = models.TextField(null=True, blank=True)  # null for database issuing, blank to tell Django
     demo_link = models.CharField(max_length=1000, null=True, blank=True)
     source_link = models.CharField(max_length=1000, null=True, blank=True)
