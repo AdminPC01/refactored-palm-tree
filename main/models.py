@@ -19,7 +19,13 @@ class Project(models.Model):
     # default=uuid.uuid4 -  This parameter generates more complex keys to avoid merge conflicts
     def __str__(self):
         return self.Title
-
+    @ property
+    def imageURL(self):
+        try:
+         img = self.featured_image.url
+        except:
+            img = ''
+        return img
 class Review(models.Model):
     VOTE_TYPE = (("UP","UP"),
              ("DOWN","DOWN")
