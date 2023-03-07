@@ -20,7 +20,7 @@ def create(response):
     form = ProjectForm()
 
     if response.method == 'POST':
-        form = ProjectForm(response.POST)
+        form = ProjectForm(response.POST, response.FILES)
         if (form.is_valid):
            form.save()
         return redirect("main")
@@ -40,7 +40,7 @@ def update_project(response,pk):
     form = ProjectForm(instance=project)
 
     if response.method == "POST":
-        form = ProjectForm(response.POST,instance=project)
+        form = ProjectForm(response.POST, response.FILES, instance=project)
         if form.is_valid():
             form.save()
             return redirect("main")
