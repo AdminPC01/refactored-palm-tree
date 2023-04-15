@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    {% for project in Project.objects.all %}
+        <p>{{project.Title}}</p>
+    {% endfor %}
+    <form action ="" method= "POST">
+        {% csrf_token %}
+        <h3> Do you actually want to delete? {{project.Title}}</h3>
+        <span><a href="/main">Go back</a></span>
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}
