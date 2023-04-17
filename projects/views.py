@@ -25,7 +25,7 @@ def create(response):
         form = ProjectForm(response.POST, response.FILES)
         if (form.is_valid):
            form.save()
-        return redirect("projects")
+        return redirect('main')
     context = {"form": form}
     return render(response, "projects/create.html", context)
 

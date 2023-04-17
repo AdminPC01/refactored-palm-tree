@@ -18,7 +18,7 @@ class Project(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     # default=uuid.uuid4 -  This parameter generates more complex keys to avoid merge conflicts
     def __str__(self):
-        return self.Title
+        return str(self.Title)
     @ property
     def imageURL(self):
         try:
