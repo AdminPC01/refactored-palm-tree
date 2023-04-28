@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+
     <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
   <!-- Mumble UI -->
     <link rel="stylesheet" href='{% static "uikit/styles/uikit.css" %}' />
@@ -70,7 +71,7 @@
                 <img class="project__thumbnail" src='{{project.imageURL}}' alt="project thumbnail" />
                 <div class="card__body">
                   <h3 class="project__title">{{project.Title}}</h3>
-                  <p><a class="project__author" href="profile.html">By {{ project.owner.name }}</a></p>
+                  <p><a class="project__author" href="{% url 'user-profile' project.owner.id %}">By {{ project.owner.name }}</a></p>
                   <p class="project--rating">
                     <span style="font-weight: bold;">{{project.vote_ratio}}</span> Postitive
                     Feedback ({{project.vote_total}} Votes)

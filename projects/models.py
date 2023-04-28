@@ -1,7 +1,6 @@
 import uuid
 from users.models import Profile
 from django.db import models
-
 # Create your models here.
 
 class Project(models.Model):
@@ -48,3 +47,5 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+
