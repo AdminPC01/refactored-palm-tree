@@ -11,7 +11,8 @@
               <h2 class="dev__name">{{profile.name}}</h2>
               <p class="dev__title">{{profile.short_intro}}</p>
               <p class="dev__location">Based in {{profile.location}}</p>
-              {% if profile.social_github %}
+                <ul class="dev__social">
+             {% if profile.social_github %}
                             <li>
                                 <a title="Github" href="{{profile.social_github}}" target="_blank"><i
                                         class="im im-github"></i></a>
@@ -41,6 +42,7 @@
                             {% endif %}
 
                         </ul>
+            </div>
               <a href="#" class="btn btn--sub btn--lg">Send Message </a>
             </div>
           </div>

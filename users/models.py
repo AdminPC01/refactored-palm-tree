@@ -11,7 +11,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=200, blank=True, null=True)
     short_intro = models.CharField(max_length=200,blank=True, null=True)
     bio = models.TextField(blank=True,null=True)
-    profile_image = models.ImageField(upload_to="profiles/", default="user-default.png", blank=True, null=True)
+    profile_image = models.ImageField(upload_to="profiles/", default="profiles/user-default.png", blank=True, null=True)
     location = models.CharField(max_length=200,blank=True,null=True)
     social_github = models.CharField(max_length=200,blank=True,null=True)
     social_twitter = models.CharField(max_length=200, blank=True, null=True)

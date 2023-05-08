@@ -13,6 +13,16 @@ def createProfile(sender, instance, created, **kwargs):
              name=user.first_name,
              email=user.email
          )
+@receiver(post_save,sender=Profile)
+def updateAccount(sender,instance,created,**kwargs):
+    profile = instance
+    user = profile.user
+
+    if created == False:
+        user.first_name = profile.name
+        user.username = profile.username
+        user.email = profile.email
+        user.save()
 
 
 @receiver(post_delete, sender=Profile)

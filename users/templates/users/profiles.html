@@ -11,11 +11,11 @@
         </div>
 
         <div class="hero-section__search">
-          <form class="form" action="#" method="get">
+          <form class="form" action="{% url 'profiles' %}" method="get">
             <div class="form__field">
               <label for="formInput#search">Search Developers </label>
-              <input class="input input--text" id="formInput#search" type="text" name="text"
-                placeholder="Search by developer name" />
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                placeholder="Search by developer name" value = "{{search_query}}" />
             </div>
 
             <input class="btn btn--sub btn--lg" type="submit" value="Search" />
@@ -25,9 +25,10 @@
     </section>
     <!-- Search Result: DevList -->
     <section class="devlist">
-      {% for profile in profiles %}
+      
       <div class="container">
         <div class="grid grid--three">
+          {% for profile in profiles %}
           <div class="column card">
             <div class="dev">
               <a href="{% url 'user-profile' profile.id %}" class="card__body">
@@ -41,19 +42,22 @@
                 </div>
                 <p class="dev__info"> {{profile.bio|slice:"150"}}</p>
                 <div class="dev__skills">
-                  {% for profile.skill_set.all in skill %}
+                  {% for skill in profile.skill_set.all %}
                   <span class="tag tag--pill tag--main">
-                    <small>{{skill.name}}</small>
+                    <small>{{skill.name|slice:"8"}}</small>
                   </span>
                   {% endfor %}
                 </div>
               </a>
-            </div>
-          </div>
 
-          {% endfor %}
+            </div>
+
+          </div>
+            {% endfor %}
         </div>
+
            </div>
+           
     </section>
 
   </main>
